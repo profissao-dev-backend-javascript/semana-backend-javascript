@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/profissao-dev-backend-javascript/semana-backend-javascript/issues"
   },
-  "homepage": "https://github.com/profissao-dev-backend-javascript/semana-backend-javascript#readme"
+  "homepage": "https://github.com/profissao-dev-backend-javascript/semana-backend-javascript#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
