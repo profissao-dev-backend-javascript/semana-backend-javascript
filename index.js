@@ -15,11 +15,26 @@ app.get('/oi', function (req, res) {
 
 // CRUD de lista de DevMon
 
-const items = ["Java", "Android", "Kotlin", "Express", "NestJS"]
+const items = ["Java", "Kotlin", "Android", "Express", "NestJS"]
+              // 0      1         2
 
 // READ ALL - [GET] /items
 app.get("/items", function (req, res) {
   res.send(items)
+})
+
+// READ BY ID - [GET] /items/:id
+app.get("/items/:id", function (req, res) {
+  // Acessamos o parâmetro de rota ID
+  // Subtraímos 1 para corrigir a questão do índice
+  // da lista que começa em 0
+  const id = req.params.id - 1
+
+  // Acessamos o item na lista a partir do index
+  const item = items[id]
+
+  // Exibimos o item obtido
+  res.send(item)
 })
 
 // CREATE - [POST] /items
