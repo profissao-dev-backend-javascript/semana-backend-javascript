@@ -69,7 +69,7 @@ async function main() {
   })
 
   // CREATE - [POST] /items
-  app.post("/items", function (req, res) {
+  app.post("/items", async function (req, res) {
     // Extraio a informação do corpo da requisição
     const item = req.body
 
@@ -82,10 +82,13 @@ async function main() {
     }
 
     // Calculamos o novo ID a partir da quantidade de itens na lista
-    item.id = items.length + 1
+    // item.id = items.length + 1
 
     // Insiro ela na lista
-    items.push(item)
+    // items.push(item)
+
+    // Inserir o item na collection
+    await collection.insertOne(item)
 
     // Enviamos uma mensagem de sucesso
     res.status(201).send(item)
