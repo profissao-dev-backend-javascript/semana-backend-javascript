@@ -130,17 +130,19 @@ async function main() {
   })
 
   // DELETE - [DELETE] /items/:id
-  app.delete("/items/:id", function (req, res) {
+  app.delete("/items/:id", async function (req, res) {
     // Acessamos o parâmetro de rota e corrigimos o índice
-    const id = +req.params.id
+    const id = req.params.id
 
     // Buscamos o índice da lista para o elemento com o ID passado
-    const index = items.findIndex(function (element) {
-      return elemento.id === id
-    })
+    // const index = items.findIndex(function (element) {
+    //   return elemento.id === id
+    // })
 
     // Removemos a informação a partir do índice
-    delete items[index]
+    // delete items[index]
+
+    await collection.deleteOne({ _id: new ObjectId(id) })
 
     // Enviamos uma mensagem de sucesso
     res.send("Item deleted successfully.")
